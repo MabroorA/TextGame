@@ -18,6 +18,9 @@ public:
 
     // Member function to initialize from JSON
     static Room fromJson(const json& j);
+    
+    // function to describe the room
+    void describeRoom() const;
 };
 
 class Object {

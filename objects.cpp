@@ -10,4 +10,6 @@ public:
     string id;
     string desc;
     string initialRoom;
+
+    
 };

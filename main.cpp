@@ -8,15 +8,22 @@
 #include <fstream>
 #include <vector>
 #include "json.hpp"
+#include "rooms.cpp"
+#include "objects.cpp"
 using namespace std;
 using json = nlohmann::json;
 
 int main() {
     cout << "Welcome" << endl;
+    
+
+
 
 	ifstream fin("Map1.json");
 	json j; // object that represents the json data
 	fin >> j; // read from file into j
+
+    rooms::describeRoom(j["rooms"][0]);
 
 	// JSON is essentially a set of key:value pairs, although
 	// the "value" themselves can be a single value, or an array of
