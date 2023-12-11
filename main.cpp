@@ -23,7 +23,9 @@ int main() {
 	json j; // object that represents the json data
 	fin >> j; // read from file into j
 
-    rooms::describeRoom(j["rooms"][0]);
+    // Get the initial room ID from the player data
+    string initialRoom = j["player"]["initialroom"].get<string>();
+    Rooms::describeRoom(j, initialRoom);
 
 	// JSON is essentially a set of key:value pairs, although
 	// the "value" themselves can be a single value, or an array of

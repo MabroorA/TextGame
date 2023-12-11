@@ -8,20 +8,49 @@ using namespace std;
 #include <fstream>
 using json = nlohmann::json;
 
-class rooms {
+class Rooms {
 public:
     string id;
     string desc;
     unordered_map<string, string> exits;
 
-
-    static void describeRoom(const json& roomJson);
+    static Rooms fromJson(const json& j);
+    
+   // Static function to describe the room
+    static void describeRoom(const json& mapData, const string& currentRoomId);
 };
 
-void rooms::describeRoom(const json& roomJson) {
+Rooms Rooms::fromJson(const json& j) {
+    Rooms room;
+    room.id = j["id"].get<string>();
+    room.desc = j["desc"].get<string>();
+    room.exits = j["exits"].get<unordered_map<string, string>>();
+    return room;
+}
 
-    cout << "Room Description: " << roomJson["desc"].get<string>() << endl;
-    // at the start print the description according to initial room (which is in objects)
-    // then print accordibf to where the player is (a variable for this needs to be added)
-    // Need  
-};
+
+void Rooms::describeRoom(const json& mapData, const string& currentRoomId) {
+    // Find the room in the "rooms" array based on the current room 
+    auto roomIt = find_if(mapData["rooms"].begin(), mapData["rooms"].end(),
+                          [currentRoomId](const json& room) {
+                              return room["id"] == currentRoomId;
+                          });
+
+    // Check if the room with the given ID was found
+    if (roomIt != mapData["rooms"].end()) {
+        // Print the description of the found room
+        cout << "Room Description: " << (*roomIt)["desc"].get<string>() << endl;
+    } else {
+        cout << "Room not found." << endl;
+    }
+}
+
+
+// void Rooms::describeRoom(const json& mapData, const string& currentRoomId)  {
+//     cout << "Room Description: " << roomJson["desc"].get<string>() << endl;
+
+//     // cout << "Room Description: " << roomJson["desc"].get<string>() << endl;
+//     // cout << "Player Room: " << roomJson["player"]["initialroom"].get<string>() << endl;
+//     // at the start print the description according to initial room (which is in objects)
+//     // then print accordibf to where the player is (a variable for this needs to be added)
+// };

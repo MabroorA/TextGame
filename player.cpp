@@ -7,5 +7,4 @@ using namespace std;
 class player {
 public:
     string initialRoom;
-    string currentRoom;
 };

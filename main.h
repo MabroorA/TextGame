@@ -48,7 +48,7 @@ public:
 class Player {
 public:
     string initialRoom;
-
+    string currentRoom;
     // Member function to initialize from JSON
     static Player fromJson(const json& j);
 };
