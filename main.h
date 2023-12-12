@@ -31,6 +31,9 @@ public:
 
     // Member function to initialize from JSON
     static Object fromJson(const json& j);
+
+    // function to describe the objects in currentRoom
+    void describeObjects() const;
 };
 
 class Enemy {
@@ -48,7 +51,7 @@ public:
 class Player {
 public:
     string initialRoom;
-    string currentRoom;
+    string currentRoom = initialRoom;
     // Member function to initialize from JSON
     static Player fromJson(const json& j);
 };

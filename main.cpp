@@ -21,10 +21,10 @@ int main() {
 	cout << "Welcome" << endl;
     // take in users input to activate the function 
     cout << "Enter look to get the description of the room" << endl;
-
-	string lookinput;
-	cin >> lookinput ;
-    Rooms::describeRoom(j, lookinput);
+	string command = "look";
+	// cin >> command;
+    Rooms::describeRoom(j,command);
+	// Object::describeObjects(j,command);
 
 	// JSON is essentially a set of key:value pairs, although
 	// the "value" themselves can be a single value, or an array of
