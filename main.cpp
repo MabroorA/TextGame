@@ -14,18 +14,17 @@ using namespace std;
 using json = nlohmann::json;
 
 int main() {
-    cout << "Welcome" << endl;
-    
-
-
-
 	ifstream fin("Map1.json");
 	json j; // object that represents the json data
 	fin >> j; // read from file into j
 
-    // Get the initial room ID from the player data
-    string initialRoom = j["player"]["initialroom"].get<string>();
-    Rooms::describeRoom(j, initialRoom);
+	cout << "Welcome" << endl;
+    // take in users input to activate the function 
+    cout << "Enter look to get the description of the room" << endl;
+
+	string lookinput;
+	cin >> lookinput ;
+    Rooms::describeRoom(j, lookinput);
 
 	// JSON is essentially a set of key:value pairs, although
 	// the "value" themselves can be a single value, or an array of

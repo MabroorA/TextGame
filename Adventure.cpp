@@ -11,12 +11,17 @@
 using namespace std;
 using json = nlohmann::json;
 
-int main() {
-    cout << "Welcome to the Rasclart adventure Game " << endl;
+int Adventure() {
+    
     
 	ifstream fin("Map1.json");
 	json j; // object that represents the json data
 	fin >> j; // read from file into j
+	cout << "Welcome to the Rasclart adventure Game " << endl;
+
+	
+
+
 
 	// JSON is essentially a set of key:value pairs, although
 	// the "value" themselves can be a single value, or an array of
@@ -26,6 +31,9 @@ int main() {
 	// This outputs how many things there are at the top level
 	// and the keys (5: rooms, objects, enemies, player, objective)
     
+
+
+
 	int numTypes = j.size();
 	//cout << numTypes << endl;
 
